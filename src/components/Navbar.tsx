@@ -1,18 +1,37 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-dark-500/80 backdrop-blur-md">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-dark-500/90 backdrop-blur-lg shadow-lg' : 'bg-dark-500/80 backdrop-blur-md'
+    }`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-brand-teal to-brand-purple flex items-center justify-center mr-2 text-white font-bold">
+                CP
+              </div>
               <span className="text-2xl font-bold text-gradient">CrossPostify</span>
             </Link>
           </div>
@@ -23,7 +42,7 @@ const Navbar = () => {
             <Link to="/#pricing" className="text-gray-300 hover:text-white transition-colors">Pricing</Link>
             <Link to="/login" className="text-gray-300 hover:text-white transition-colors">Login</Link>
             <Button className="bg-gradient-to-r from-brand-teal to-brand-purple hover:opacity-90 transition-opacity">
-              Get Started
+              <Link to="/app">Get Started</Link>
             </Button>
           </nav>
           
@@ -38,7 +57,7 @@ const Navbar = () => {
       {/* Mobile menu */}
       {isMenuOpen && (
         <div className="md:hidden">
-          <div className="container mx-auto px-4 py-4 bg-dark-400">
+          <div className="container mx-auto px-4 py-4 bg-dark-400/95 backdrop-blur-lg">
             <nav className="flex flex-col space-y-4">
               <Link 
                 to="/#features" 
@@ -69,7 +88,7 @@ const Navbar = () => {
                 Login
               </Link>
               <Button className="bg-gradient-to-r from-brand-teal to-brand-purple hover:opacity-90 transition-opacity w-full">
-                Get Started
+                <Link to="/app">Get Started</Link>
               </Button>
             </nav>
           </div>

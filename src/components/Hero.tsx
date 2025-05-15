@@ -2,7 +2,8 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Play } from 'lucide-react';
+import { Instagram, Facebook, Youtube, Twitter, Linkedin } from 'lucide-react';
 
 const Hero = () => {
   return (
@@ -13,6 +14,9 @@ const Hero = () => {
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="mb-6 inline-block px-4 py-1 bg-glass rounded-full text-sm font-medium text-brand-teal">
+            Simplify Your Content Distribution
+          </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             Create Once, <span className="text-gradient">Publish Everywhere</span>
           </h1>
@@ -27,7 +31,9 @@ const Hero = () => {
               </Link>
             </Button>
             <Button variant="outline" size="lg">
-              <Link to="/#demo">Watch Demo</Link>
+              <Link to="/#demo" className="flex items-center">
+                <Play className="mr-2 h-4 w-4" /> Watch Demo
+              </Link>
             </Button>
           </div>
         </div>
@@ -53,19 +59,21 @@ const Hero = () => {
         
         <div className="mt-16 grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
           <div className="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
-            <img src="https://placehold.co/200x80/png?text=YouTube" alt="YouTube" className="h-8 mx-auto" />
+            <Youtube className="h-8 w-8 mx-auto text-red-500" />
           </div>
           <div className="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
-            <img src="https://placehold.co/200x80/png?text=Instagram" alt="Instagram" className="h-8 mx-auto" />
+            <Instagram className="h-8 w-8 mx-auto text-pink-500" />
           </div>
           <div className="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
-            <img src="https://placehold.co/200x80/png?text=Facebook" alt="Facebook" className="h-8 mx-auto" />
+            <Facebook className="h-8 w-8 mx-auto text-blue-500" />
           </div>
           <div className="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
-            <img src="https://placehold.co/200x80/png?text=TikTok" alt="TikTok" className="h-8 mx-auto" />
+            <div className="relative flex items-center justify-center h-8">
+              <span className="text-lg font-bold">TT</span>
+            </div>
           </div>
           <div className="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
-            <img src="https://placehold.co/200x80/png?text=LinkedIn" alt="LinkedIn" className="h-8 mx-auto" />
+            <Linkedin className="h-8 w-8 mx-auto text-blue-700" />
           </div>
         </div>
       </div>

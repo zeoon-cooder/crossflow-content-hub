@@ -27,9 +27,15 @@ const steps = [
 
 const HowItWorks = () => {
   return (
-    <section className="py-20 bg-dark-300">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-dark-300 relative">
+      <div className="absolute top-0 left-0 w-72 h-72 bg-brand-teal/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-brand-purple/5 rounded-full blur-3xl"></div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="mb-6 inline-block px-4 py-1 bg-glass rounded-full text-sm font-medium text-brand-blue">
+            Simple Process
+          </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             How <span className="text-gradient">CrossPostify</span> Works
           </h2>
@@ -40,15 +46,27 @@ const HowItWorks = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {steps.map((step, index) => (
-            <Card key={index} className="bg-dark-400 border border-white/10 overflow-hidden relative">
+            <Card key={index} className="bg-dark-400 border border-white/10 overflow-hidden relative group hover:transform hover:scale-105 transition-transform">
               <div className="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-brand-teal to-brand-purple"></div>
               <CardContent className="p-6 pt-8">
-                <div className="text-4xl font-bold text-white/10 mb-4">{step.number}</div>
+                <div className="text-4xl font-bold text-white/10 mb-4 group-hover:text-gradient transition-all">{step.number}</div>
                 <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
                 <p className="text-gray-300">{step.description}</p>
               </CardContent>
             </Card>
           ))}
+        </div>
+        
+        <div className="mt-16 flex justify-center">
+          <div className="bg-glass p-6 rounded-xl max-w-2xl text-center">
+            <p className="text-lg text-gray-200">
+              "CrossPostify saves me 7+ hours every week. I now focus on creating content, not wrestling with different platform requirements."
+            </p>
+            <div className="mt-4">
+              <p className="font-medium">Sarah L.</p>
+              <p className="text-sm text-gray-400">Content Creator • 250K+ Followers</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

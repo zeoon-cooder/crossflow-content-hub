@@ -41,12 +41,16 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border selection:bg-brand-purple/20 selection:text-white;
   }
 
   body {
     @apply bg-dark-400 text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  html {
+    @apply scroll-smooth;
   }
 }
 
@@ -61,5 +65,9 @@
   
   .gradient-border {
     border-image: linear-gradient(to right, #06B6D4, #8B5CF6) 1;
+  }
+  
+  .border-l-12 {
+    border-left-width: 12px;
   }
 }
